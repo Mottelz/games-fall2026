@@ -16,6 +16,7 @@ function Invaders.load()
 end
 
 function Invaders.spawn()
+    Invaders.list = {}
     for row = 1, 5 do
         for col = 1, 11 do
             table.insert(Invaders.list, {
@@ -64,6 +65,16 @@ function Invaders.draw()
     for i, inv in ipairs(Invaders.list) do
         love.graphics.draw(Invaders.sheet, Invaders.quads[Invaders.frame], inv.x, inv.y)
     end
+end
+
+function Invaders.lowest()
+    local lowest = nil
+    for _, inv in ipairs(Invaders.list) do
+        if not lowest or inv.y > lowest then
+            lowest = inv.y
+        end
+    end
+    return lowest
 end
 
 return Invaders

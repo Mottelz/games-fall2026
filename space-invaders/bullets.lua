@@ -21,5 +21,9 @@ function Bullets.draw()
     end
 end
 
+function Bullets.clear()
+    Bullets.list = {}
+end
+
 
 return Bullets
